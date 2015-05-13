@@ -1,0 +1,27 @@
+{
+  "name": "Kraken",
+  "version": "0.1.0",
+  "description": "A fun app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DukeBaird/kraken"
+  },
+  "dependencies": {
+    "express": "~3.x",
+    "pg": "~2.x",
+    "ejs": "~1.0.0",
+    "formidable": "~1.0.15",
+    "body-parser": "1.5.0",
+    "bluebird": "2.2.2"
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "bugs": {
+    "url": "https://github.com/DukeBaird/kraken/issues"
+  },
+  "main": "main.js",
+  "devDependencies": {},
+  "author": "Ben Craig",
+  "license": "BSD-2-Clause"
+} 
