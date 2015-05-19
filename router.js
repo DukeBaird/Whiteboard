@@ -19,38 +19,38 @@ function route(req, res) {
 
 
 
-    console.log("testing mongodb");
-    MongoClient.connect("mongodb://localhost:27017/testdb", function(err, db) {
-      if (!err) {
-        console.log("connected!");
+    // console.log("testing mongodb");
+    // MongoClient.connect("mongodb://localhost:27017/testdb", function(err, db) {
+    //   if (!err) {
+    //     console.log("connected!");
 
-        var collection = db.collection('test');
+    //     var collection = db.collection('test');
 
-        collection.insert({
-          'hello': 'test'
-        }, function(err, result) {
-            if (err) {
-              console.log(err);
-            } else {
-              console.log(result);
-              console.log('no err');
+    //     collection.insert({
+    //       'hello': 'test'
+    //     }, function(err, result) {
+    //         if (err) {
+    //           console.log(err);
+    //         } else {
+    //           console.log(result);
+    //           console.log('no err');
 
-              collection.find({
-                'hello': 'test'
-              }).toArray(function(err, item) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  console.log(item);
-                }
-              });
-            }
-          });
+    //           collection.find({
+    //             'hello': 'test'
+    //           }).toArray(function(err, item) {
+    //             if (err) {
+    //               console.log(err);
+    //             } else {
+    //               console.log(item);
+    //             }
+    //           });
+    //         }
+    //       });
 
-      } else {
-        console.log(err);
-      }
-    });
+    //   } else {
+    //     console.log(err);
+    //   }
+    // });
 
 
 
