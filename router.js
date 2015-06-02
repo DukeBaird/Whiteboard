@@ -1,7 +1,6 @@
 var url = require("url");
 // var MongoClient = require('mongodb').MongoClient;
 
-
 handle = {};
 
 function route(req, res) {
@@ -9,15 +8,9 @@ function route(req, res) {
     var pathname = url.parse(req.url).pathname;
     var path = "/" + req.params.page;
 
-    // console.log(path);
-    // console.log("Routing to " + pathname);
-
-
     if (typeof (handle[path]) === 'function') {
         handle[path](req, res, pathname);
     } else if (pathname === '/') {
-
-
 
         // console.log("testing mongodb");
         // MongoClient.connect("mongodb://localhost:27017/testdb", function(err, db) {
@@ -51,15 +44,6 @@ function route(req, res) {
         //     console.log(err);
         //   }
         // });
-
-
-
-
-
-
-
-
-
 
         res.render('index', {
             pageTitle: "Home"
