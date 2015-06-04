@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "express": "~3.x",
-    "pg": "latest",
     "ejs": "latest",
     "formidable": "~1.0.15",
     "body-parser": "1.5.0",
