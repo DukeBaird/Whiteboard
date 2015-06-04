@@ -7,12 +7,13 @@
     "url": "https://github.com/DukeBaird/kraken"
   },
   "dependencies": {
-    "express": "~3.x",
-    "ejs": "latest",
-    "formidable": "~1.0.15",
-    "body-parser": "1.5.0",
     "bluebird": "latest",
-    "mongodb" : "2.0.31"
+    "body-parser": "1.5.0",
+    "ejs": "latest",
+    "express": "~3.x",
+    "formidable": "~1.0.15",
+    "mongodb": "2.0.31",
+    "socket.io": "^1.3.5"
   },
   "scripts": {
     "start": "node main.js"
@@ -24,4 +25,4 @@
   "devDependencies": {},
   "author": "Ben Craig",
   "license": "BSD-2-Clause"
-} 
+}
