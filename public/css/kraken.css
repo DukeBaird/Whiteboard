@@ -10,3 +10,8 @@
 #add li:hover > ul {
 	display: block;
 }
+
+
+#whiteboard {
+	background-color: black;
+}

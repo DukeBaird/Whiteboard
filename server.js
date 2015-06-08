@@ -4,8 +4,13 @@ var ejs = require('ejs');
 var url = require('url');
 var router = require("./router");
 var bodyParser = require('body-parser');
+var http = require('http').Server(app);
+var io = require('socket.io')(http);    
 
 function start() {
+
+    app.set('port', (process.env.PORT || 8080));
+
     app.engine('.ejs', ejs.__express);
 
     app.set('views', __dirname + '/views');
@@ -24,8 +29,16 @@ function start() {
     app.post('/:page/:page2', router.route);
 
 
-    app.listen(8080);
-    console.log("Server start and listening on port 8080");
+    http.listen(app.get('port'), function() {
+      console.log('Server running on localhost:' + app.get('port'));
+    });
+
+    io.on('connection', function (socket) {
+        socket.on('draw', function (params) {
+            io.emit('draw', params);
+        });
+    });
+
 }
 
 exports.start = start;
