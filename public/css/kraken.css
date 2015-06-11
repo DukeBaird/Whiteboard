@@ -1,3 +1,9 @@
+/*
+	Please keep eveyrthing in alphabetical order,
+	with one space between items.
+*/
+
+
 #add {
 	list-style-type: none;
 }
@@ -11,7 +17,9 @@
 	display: block;
 }
 
-
 #whiteboard {
-	background-color: black;
+	background-color: white;
+	border-color: black;
+	border-style: solid;
+	border-width: 10px;
 }
