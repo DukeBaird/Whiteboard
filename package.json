@@ -22,7 +22,9 @@
     "url": "https://github.com/DukeBaird/kraken/issues"
   },
   "main": "main.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "~3.9.0"
+  },
   "author": "Ben Craig",
   "license": "BSD-2-Clause"
 }
