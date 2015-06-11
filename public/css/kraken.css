@@ -17,6 +17,10 @@
 	display: block;
 }
 
+button.clicked {
+	background-color: grey;
+}
+
 #whiteboard {
 	background-color: white;
 	border-color: black;
