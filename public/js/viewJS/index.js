@@ -14,13 +14,12 @@ var finalCoord = {
 }
 
 c.addEventListener('mousedown', function (e) {
-	// console.log(e);
+
 	initialCoord.x = e.x;
 	initialCoord.y = e.y;
 });
 
 c.addEventListener('mouseup', function (e) {
-	// console.log(e);
 
 	finalCoord.x = e.x;
 	finalCoord.y = e.y;
@@ -64,4 +63,25 @@ document.getElementById('clear').addEventListener('click', function (e) {
 
 socket.on('draw', function (params) {
 	console.log(params);
+
+	if (params.shape === 'line') {
+		ctx.beginPath();
+		ctx.strokeStyle = 'black';
+		ctx.moveTo(params.initialCoord.x, params.initialCoord.y);
+		ctx.lineTo(params.finalCoord.x, params.finalCoord.y);
+		ctx.stroke();
+	} else if (params.shape === 'square') {
+		ctx.strokeStyle = 'blue';
+		ctx.rect(params.initialCoord.x, params.initialCoord.y, Math.abs(params.finalCoord.x - params.initialCoord.x),
+			Math.abs(params.finalCoord.y - params.initialCoord.y));
+		ctx.stroke();
+	} else if (params.shape === 'circle') {
+		ctx.strokeStyle = 'green';
+		ctx.beginPath();
+		ctx.arc(params.initialCoord.x, params.initialCoord.y,
+			Math.sqrt(Math.pow(params.finalCoord.x - params.initialCoord.x, 2) + Math.pow(params.finalCoord.y - params.initialCoord.y, 2)),
+			0, 2 * Math.PI, false);
+		ctx.stroke();
+	}
+
 });
