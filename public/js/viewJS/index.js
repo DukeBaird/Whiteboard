@@ -17,8 +17,8 @@ var finalCoord = {
 c.addEventListener('mousemove', function (e) {
 	if (isMouseDown && shape === 'marker') {
 
-	initialCoord.x = e.x;
-	initialCoord.y = e.y;
+	initialCoord.x = e.x - 15;
+	initialCoord.y = e.y - 15;
 
 	var params = {
 		shape: shape,
@@ -32,15 +32,15 @@ c.addEventListener('mousemove', function (e) {
 c.addEventListener('mousedown', function (e) {
 
 	isMouseDown = true;
-	initialCoord.x = e.x;
-	initialCoord.y = e.y;
+	initialCoord.x = e.x - 15;
+	initialCoord.y = e.y - 15;
 });
 
 c.addEventListener('mouseup', function (e) {
 
 	isMouseDown = false;
-	finalCoord.x = e.x;
-	finalCoord.y = e.y;
+	finalCoord.x = e.x - 15;
+	finalCoord.y = e.y - 15;
 
 	var params = {
 		shape: shape,
@@ -102,13 +102,14 @@ socket.on('draw', function (params) {
 		ctx.lineTo(params.finalCoord.x, params.finalCoord.y);
 		ctx.stroke();
 	} else if (params.shape === 'square') {
+		ctx.beginPath();
 		ctx.strokeStyle = 'blue';
 		ctx.rect(params.initialCoord.x, params.initialCoord.y, Math.abs(params.finalCoord.x - params.initialCoord.x),
 			Math.abs(params.finalCoord.y - params.initialCoord.y));
 		ctx.stroke();
 	} else if (params.shape === 'circle') {
-		ctx.strokeStyle = 'green';
 		ctx.beginPath();
+		ctx.strokeStyle = 'green';
 		ctx.arc(params.initialCoord.x, params.initialCoord.y,
 			Math.sqrt(Math.pow(params.finalCoord.x - params.initialCoord.x, 2) + Math.pow(params.finalCoord.y - params.initialCoord.y, 2)),
 			0, 2 * Math.PI, false);
