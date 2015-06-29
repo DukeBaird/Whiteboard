@@ -15,7 +15,7 @@ ejs is a templating engine, but if we use angular/react, we dont need to use thi
 
 bluebird is a promise library
 
-mongodb is a database thign.  
+mongodb is a database thing.  
 
 once you have it setup, you should be able to run npm start, and the server should start for you.
 
