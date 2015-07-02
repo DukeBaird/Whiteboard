@@ -5,6 +5,7 @@ var ctx = c.getContext('2d');
 var socket = io();
 var shape = 'circle';
 var isMouseDown = false;
+var color = 'red';
 var initialCoord = {
 	x: 0,
 	y: 0
@@ -22,7 +23,8 @@ c.addEventListener('mousemove', function (e) {
 
 	var params = {
 		shape: shape,
-		initialCoord: initialCoord
+		initialCoord: initialCoord,
+		color: color
 	};
 
 		socket.emit('draw', params);
@@ -45,10 +47,32 @@ c.addEventListener('mouseup', function (e) {
 	var params = {
 		shape: shape,
 		initialCoord: initialCoord,
-		finalCoord: finalCoord
+		finalCoord: finalCoord,
+		color: color
 	};
 	
 	socket.emit('draw', params);
+});
+
+document.getElementById('blueColor').addEventListener('click', function (e) {
+	document.getElementById('blueColor').className = 'clicked';
+	document.getElementById('redColor').className = '';
+	document.getElementById('greenColor').className = '';
+	color = 'blue';
+});
+
+document.getElementById('greenColor').addEventListener('click', function (e) {
+	document.getElementById('blueColor').className = '';
+	document.getElementById('redColor').className = '';
+	document.getElementById('greenColor').className = 'clicked';
+	color = 'green';
+});
+
+document.getElementById('redColor').addEventListener('click', function (e) {
+	document.getElementById('blueColor').className = '';
+	document.getElementById('redColor').className = 'clicked';
+	document.getElementById('greenColor').className = '';
+	color = 'red';
 });
 
 document.getElementById('circleButton').addEventListener('click', function (e) {
@@ -97,30 +121,30 @@ socket.on('draw', function (params) {
 
 	if (params.shape === 'line') {
 		ctx.beginPath();
-		ctx.strokeStyle = 'black';
+		ctx.strokeStyle = params.color;
 		ctx.moveTo(params.initialCoord.x, params.initialCoord.y);
 		ctx.lineTo(params.finalCoord.x, params.finalCoord.y);
 		ctx.stroke();
 	} else if (params.shape === 'square') {
 		ctx.beginPath();
-		ctx.strokeStyle = 'blue';
+		ctx.strokeStyle = params.color;
 		ctx.rect(params.initialCoord.x, params.initialCoord.y, Math.abs(params.finalCoord.x - params.initialCoord.x),
 			Math.abs(params.finalCoord.y - params.initialCoord.y));
 		ctx.stroke();
 	} else if (params.shape === 'circle') {
 		ctx.beginPath();
-		ctx.strokeStyle = 'green';
+		ctx.strokeStyle = params.color;
 		ctx.arc(params.initialCoord.x, params.initialCoord.y,
 			Math.sqrt(Math.pow(params.finalCoord.x - params.initialCoord.x, 2) + Math.pow(params.finalCoord.y - params.initialCoord.y, 2)),
 			0, 2 * Math.PI, false);
 		ctx.stroke();
 	} else if (params.shape === 'marker') {
-		ctx.strokeStyle = 'green';
+		ctx.strokeStyle = params.color;
 		ctx.beginPath();
 		ctx.arc(params.initialCoord.x, params.initialCoord.y,
 			5,
 			0, 2 * Math.PI, false);
-		ctx.fillStyle = 'green';
+		ctx.fillStyle = params.color;
 		ctx.fill();
 		ctx.stroke();
 	} 
