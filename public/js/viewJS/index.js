@@ -126,6 +126,18 @@ socket.on('draw', function (params) {
 		ctx.lineTo(params.finalCoord.x, params.finalCoord.y);
 		ctx.stroke();
 	} else if (params.shape === 'square') {
+
+		if (params.initialCoord.x > params.finalCoord.x) {
+			var temp = params.initialCoord.x;
+			params.initialCoord.x = params.finalCoord.x;
+			params.finalCoord.x = temp;
+		}
+		if (params.initialCoord.y > params.finalCoord.y) {
+			var temp = params.initialCoord.y;
+			params.initialCoord.y = params.finalCoord.y;
+			params.finalCoord.y = temp;
+		}
+
 		ctx.beginPath();
 		ctx.strokeStyle = params.color;
 		ctx.rect(params.initialCoord.x, params.initialCoord.y, Math.abs(params.finalCoord.x - params.initialCoord.x),
