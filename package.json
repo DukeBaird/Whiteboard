@@ -1,10 +1,10 @@
 {
-  "name": "Kraken",
+  "name": "Whiteboard",
   "version": "0.1.0",
   "description": "A fun app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DukeBaird/kraken"
+    "url": "https://github.com/DukeBaird/whiteboard"
   },
   "dependencies": {
     "bluebird": "latest",
@@ -19,7 +19,7 @@
     "start": "node main.js"
   },
   "bugs": {
-    "url": "https://github.com/DukeBaird/kraken/issues"
+    "url": "https://github.com/DukeBaird/whiteboard/issues"
   },
   "main": "main.js",
   "devDependencies": {
