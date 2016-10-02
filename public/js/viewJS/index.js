@@ -1,4 +1,3 @@
-'use strict';
 
 var c = document.getElementById('whiteboard');
 var ctx = c.getContext('2d');
@@ -9,11 +8,11 @@ var color = 'red';
 var initialCoord = {
 	x: 0,
 	y: 0
-}
+};
 var finalCoord = {
 	x: 0,
 	y: 0
-}
+};
 
 c.addEventListener('mousemove', function (e) {
 	if (isMouseDown && shape === 'marker') {
@@ -32,7 +31,6 @@ c.addEventListener('mousemove', function (e) {
 });
 
 c.addEventListener('mousedown', function (e) {
-
 	isMouseDown = true;
 	initialCoord.x = e.x - 15;
 	initialCoord.y = e.y - 15;
@@ -81,7 +79,6 @@ document.getElementById('circleButton').addEventListener('click', function (e) {
 	document.getElementById('squareButton').className = '';
 	document.getElementById('markerButton').className = '';
 	shape = 'circle';
-	// console.log('Clicked circle button');
 });
 
 document.getElementById('lineButton').addEventListener('click', function (e) {
@@ -90,7 +87,6 @@ document.getElementById('lineButton').addEventListener('click', function (e) {
 	document.getElementById('squareButton').className = '';
 	document.getElementById('markerButton').className = '';
 	shape = 'line';
-	// console.log('Clicked line button');
 });
 
 document.getElementById('squareButton').addEventListener('click', function (e) {
@@ -99,7 +95,6 @@ document.getElementById('squareButton').addEventListener('click', function (e) {
 	document.getElementById('squareButton').className = 'clicked';
 	document.getElementById('markerButton').className = '';
 	shape = 'square';
-	// console.log('Clicked square button');
 });
 
 document.getElementById('markerButton').addEventListener('click', function (e) {
@@ -112,12 +107,12 @@ document.getElementById('markerButton').addEventListener('click', function (e) {
 });
 
 document.getElementById('clear').addEventListener('click', function (e) {
-	console.log('Clear Canvas');
 	ctx.clearRect(0, 0, c.width, c.height);
 });
 
 socket.on('draw', function (params) {
-	console.log(params);
+	var temp;
+
 
 	if (params.shape === 'line') {
 		ctx.beginPath();
@@ -128,12 +123,12 @@ socket.on('draw', function (params) {
 	} else if (params.shape === 'square') {
 
 		if (params.initialCoord.x > params.finalCoord.x) {
-			var temp = params.initialCoord.x;
+			temp = params.initialCoord.x;
 			params.initialCoord.x = params.finalCoord.x;
 			params.finalCoord.x = temp;
 		}
 		if (params.initialCoord.y > params.finalCoord.y) {
-			var temp = params.initialCoord.y;
+			temp = params.initialCoord.y;
 			params.initialCoord.y = params.finalCoord.y;
 			params.finalCoord.y = temp;
 		}
